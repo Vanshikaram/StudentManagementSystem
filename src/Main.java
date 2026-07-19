@@ -1,28 +1,72 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         StudentManager manager = new StudentManager();
 
-        Student student1 = new Student(
-                101,
-                "Rahul Sharma",
-                20,
-                "Computer Science",
-                92.5
-        );
+        int choice;
 
-        Student student2 = new Student(
-                102,
-                "Priya Singh",
-                19,
-                "Information Technology",
-                89.8
-        );
+        do {
 
-        manager.addStudent(student1);
-        manager.addStudent(student2);
+            System.out.println("\n===== Student Management System =====");
+            System.out.println("1. Add Student");
+            System.out.println("2. Display All Students");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
 
-        manager.displayAllStudents();
+            choice = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            switch (choice) {
+
+                case 1:
+
+                    System.out.print("Enter Student ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter Age: ");
+                    int age = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Course: ");
+                    String course = sc.nextLine();
+
+                    System.out.print("Enter Marks: ");
+                    double marks = sc.nextDouble();
+
+                    Student student = new Student(id, name, age, course, marks);
+
+                    manager.addStudent(student);
+
+                    break;
+
+                case 2:
+
+                    manager.displayAllStudents();
+
+                    break;
+
+                case 3:
+
+                    System.out.println("Thank you for using Student Management System!");
+
+                    break;
+
+                default:
+
+                    System.out.println("Invalid choice!");
+
+            }
+
+        } while (choice != 3);
+
+        sc.close();
     }
 }
