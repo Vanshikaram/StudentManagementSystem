@@ -47,4 +47,21 @@ public class StudentManager {
 
         System.out.println("Student with ID " + id + " not found.");
     }
+
+    // Delete student by ID
+    public void deleteStudentById(int id) {
+
+       for (int i = 0; i < students.size(); i++) {
+
+           if (students.get(i).getId() == id) {
+
+               System.out.println(students.get(i).getName() + " deleted successfully!");
+
+               students.remove(i);
+               return;
+            }
+        }
+
+        System.out.println("Student with ID " + id + " not found.");
+    }
 }

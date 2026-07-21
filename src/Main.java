@@ -15,7 +15,8 @@ public class Main {
             System.out.println("1. Add Student");
             System.out.println("2. Display All Students");
             System.out.println("3. Search Student by ID");
-            System.out.println("4. Exit");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -65,6 +66,15 @@ public class Main {
 
                 case 4:
 
+                    System.out.print("Enter Student ID to delete: ");
+                    int deleteId = sc.nextInt();
+
+                    manager.deleteStudentById(deleteId);
+
+                    break;
+
+                case 5:
+
                     System.out.println("Thank you for using Student Management System!");
 
                     break;
@@ -75,7 +85,7 @@ public class Main {
 
             }
 
-        } while (choice != 4);
+        } while (choice != 5);
 
         sc.close();
     }
