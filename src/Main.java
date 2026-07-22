@@ -16,7 +16,8 @@ public class Main {
             System.out.println("2. Display All Students");
             System.out.println("3. Search Student by ID");
             System.out.println("4. Delete Student");
-            System.out.println("5. Exit");
+            System.out.println("5. Update Student");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -75,6 +76,29 @@ public class Main {
 
                 case 5:
 
+                    System.out.print("Enter Student ID to update: ");
+                    int updateId = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter New Name: ");
+                    String newName = sc.nextLine();
+
+                    System.out.print("Enter New Age: ");
+                    int newAge = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter New Course: ");
+                    String newCourse = sc.nextLine();
+
+                    System.out.print("Enter New Marks: ");
+                    double newMarks = sc.nextDouble();
+
+                    manager.updateStudentById(updateId, newName, newAge, newCourse, newMarks);
+
+                    break;
+
+                case 6:
+
                     System.out.println("Thank you for using Student Management System!");
 
                     break;
@@ -85,7 +109,7 @@ public class Main {
 
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         sc.close();
     }

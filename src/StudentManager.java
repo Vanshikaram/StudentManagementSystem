@@ -64,4 +64,24 @@ public class StudentManager {
 
         System.out.println("Student with ID " + id + " not found.");
     }
+
+    // Update student by ID
+    public void updateStudentById(int id, String name, int age, String course, double marks) {
+
+        for (Student student : students) {
+
+            if (student.getId() == id) {
+
+                student.setName(name);
+                student.setAge(age);
+                student.setCourse(course);
+                student.setMarks(marks);
+
+                System.out.println("Student updated successfully!");
+                return;
+            }
+        }
+
+        System.out.println("Student with ID " + id + " not found.");
+    }
 }
