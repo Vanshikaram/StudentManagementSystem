@@ -21,7 +21,7 @@ public class Main {
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine(); // Clear buffer
 
             switch (choice) {
 
@@ -34,18 +34,38 @@ public class Main {
                     System.out.print("Enter Name: ");
                     String name = sc.nextLine();
 
-                    System.out.print("Enter Age: ");
-                    int age = sc.nextInt();
+                    int age;
+
+                    do {
+                        System.out.print("Enter Age (greater than 0): ");
+                        age = sc.nextInt();
+
+                        if (age <= 0) {
+                            System.out.println("Invalid age! Please try again.");
+                        }
+
+                    } while (age <= 0);
+
                     sc.nextLine();
 
                     System.out.print("Enter Course: ");
                     String course = sc.nextLine();
 
-                    System.out.print("Enter Marks: ");
-                    double marks = sc.nextDouble();
+                    double marks;
+
+                    do {
+                        System.out.print("Enter Marks (0-100): ");
+                        marks = sc.nextDouble();
+
+                        if (marks < 0 || marks > 100) {
+                            System.out.println("Invalid marks! Please enter between 0 and 100.");
+                        }
+
+                    } while (marks < 0 || marks > 100);
+
+                    sc.nextLine();   // ⭐ IMPORTANT
 
                     Student student = new Student(id, name, age, course, marks);
-
                     manager.addStudent(student);
 
                     break;
@@ -60,6 +80,7 @@ public class Main {
 
                     System.out.print("Enter Student ID to search: ");
                     int searchId = sc.nextInt();
+                    sc.nextLine();   // ⭐ IMPORTANT
 
                     manager.searchStudentById(searchId);
 
@@ -69,6 +90,7 @@ public class Main {
 
                     System.out.print("Enter Student ID to delete: ");
                     int deleteId = sc.nextInt();
+                    sc.nextLine();   // ⭐ IMPORTANT
 
                     manager.deleteStudentById(deleteId);
 
@@ -83,15 +105,36 @@ public class Main {
                     System.out.print("Enter New Name: ");
                     String newName = sc.nextLine();
 
-                    System.out.print("Enter New Age: ");
-                    int newAge = sc.nextInt();
+                    int newAge;
+
+                    do {
+                        System.out.print("Enter New Age (greater than 0): ");
+                        newAge = sc.nextInt();
+
+                        if (newAge <= 0) {
+                            System.out.println("Invalid age! Please try again.");
+                        }
+
+                    } while (newAge <= 0);
+
                     sc.nextLine();
 
                     System.out.print("Enter New Course: ");
                     String newCourse = sc.nextLine();
 
-                    System.out.print("Enter New Marks: ");
-                    double newMarks = sc.nextDouble();
+                    double newMarks;
+
+                    do {
+                        System.out.print("Enter New Marks (0-100): ");
+                        newMarks = sc.nextDouble();
+
+                        if (newMarks < 0 || newMarks > 100) {
+                            System.out.println("Invalid marks! Please enter between 0 and 100.");
+                        }
+
+                    } while (newMarks < 0 || newMarks > 100);
+
+                    sc.nextLine();   // ⭐ IMPORTANT
 
                     manager.updateStudentById(updateId, newName, newAge, newCourse, newMarks);
 
@@ -100,13 +143,11 @@ public class Main {
                 case 6:
 
                     System.out.println("Thank you for using Student Management System!");
-
                     break;
 
                 default:
 
                     System.out.println("Invalid choice!");
-
             }
 
         } while (choice != 6);

@@ -12,6 +12,15 @@ public class StudentManager {
 
     // Add a student
     public void addStudent(Student student) {
+
+        // Check for duplicate ID
+         for (Student s : students) {
+            if (s.getId() == student.getId()) {
+                System.out.println("Error: Student ID already exists!");
+                return;
+            }
+        }
+
         students.add(student);
         System.out.println(student.getName() + " added successfully!");
     }
