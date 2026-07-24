@@ -57,6 +57,26 @@ public class StudentManager {
         System.out.println("Student with ID " + id + " not found.");
     }
 
+    // Search student by Name
+    public void searchStudentByName(String name) {
+
+        boolean found = false;
+
+        for (Student student : students) {
+
+            if (student.getName().equalsIgnoreCase(name)) {
+
+                System.out.println("\nStudent Found:");
+                student.displayStudent();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No student found with name: " + name);
+        }
+    }
+
     // Delete student by ID
     public void deleteStudentById(int id) {
 

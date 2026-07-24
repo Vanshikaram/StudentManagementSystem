@@ -15,9 +15,10 @@ public class Main {
             System.out.println("1. Add Student");
             System.out.println("2. Display All Students");
             System.out.println("3. Search Student by ID");
-            System.out.println("4. Delete Student");
-            System.out.println("5. Update Student");
-            System.out.println("6. Exit");
+            System.out.println("4. Search Student by Name");
+            System.out.println("5. Delete Student");
+            System.out.println("6. Update Student");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -88,6 +89,15 @@ public class Main {
 
                 case 4:
 
+                    System.out.print("Enter Student Name: ");
+                    String searchName = sc.nextLine();
+
+                    manager.searchStudentByName(searchName);
+
+                break;
+
+                case 5:
+
                     System.out.print("Enter Student ID to delete: ");
                     int deleteId = sc.nextInt();
                     sc.nextLine();   // ⭐ IMPORTANT
@@ -96,7 +106,7 @@ public class Main {
 
                     break;
 
-                case 5:
+                case 6:
 
                     System.out.print("Enter Student ID to update: ");
                     int updateId = sc.nextInt();
@@ -140,7 +150,7 @@ public class Main {
 
                     break;
 
-                case 6:
+                case 7:
 
                     System.out.println("Thank you for using Student Management System!");
                     break;
@@ -150,7 +160,7 @@ public class Main {
                     System.out.println("Invalid choice!");
             }
 
-        } while (choice != 6);
+        } while (choice != 7);
 
         sc.close();
     }
