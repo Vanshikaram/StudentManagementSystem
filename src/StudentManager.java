@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ArrayList;
 
 public class StudentManager {
@@ -75,6 +77,24 @@ public class StudentManager {
         if (!found) {
             System.out.println("No student found with name: " + name);
         }
+    }
+
+    // Sort students by name
+    public void sortStudentsByName() {
+
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
+
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                return s1.getName().compareToIgnoreCase(s2.getName());
+            }
+        });
+
+        System.out.println("Students sorted by name successfully!");
     }
 
     // Delete student by ID

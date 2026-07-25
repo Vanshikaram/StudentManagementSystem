@@ -18,7 +18,8 @@ public class Main {
             System.out.println("4. Search Student by Name");
             System.out.println("5. Delete Student");
             System.out.println("6. Update Student");
-            System.out.println("7. Exit");
+            System.out.println("7. Sort Students by Name");
+            System.out.println("8. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -152,6 +153,12 @@ public class Main {
 
                 case 7:
 
+                    manager.sortStudentsByName();
+
+                    break;
+
+                case 8:
+
                     System.out.println("Thank you for using Student Management System!");
                     break;
 
@@ -160,7 +167,7 @@ public class Main {
                     System.out.println("Invalid choice!");
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
 
         sc.close();
     }
