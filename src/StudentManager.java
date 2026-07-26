@@ -97,6 +97,25 @@ public class StudentManager {
         System.out.println("Students sorted by name successfully!");
     }
 
+    // Sort students by marks in descending order
+    public void sortStudentsByMarks() {
+
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
+
+        Collections.sort(students, new Comparator<Student>() {
+
+            @Override
+            public int compare(Student s1, Student s2) {
+                return Double.compare(s2.getMarks(), s1.getMarks());
+            }
+        });
+
+        System.out.println("Students sorted by marks successfully!");
+    }
+
     // Delete student by ID
     public void deleteStudentById(int id) {
 
