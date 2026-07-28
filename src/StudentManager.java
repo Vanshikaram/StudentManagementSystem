@@ -151,5 +151,11 @@ public class StudentManager {
         }
 
         System.out.println("Student with ID " + id + " not found.");
+
+
+    }
+    // Save students to file
+    public void saveStudents() {
+        FileManager.saveStudentsToFile(students);
     }
 }
