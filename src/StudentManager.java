@@ -7,9 +7,11 @@ public class StudentManager {
     // List to store students
     private ArrayList<Student> students;
 
-    // Constructor
     public StudentManager() {
-        students = new ArrayList<>();
+
+        students = FileManager.loadStudentsFromFile();
+
+        System.out.println(students.size() + " student(s) loaded from file.");
     }
 
     // Add a student
