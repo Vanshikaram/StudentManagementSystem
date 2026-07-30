@@ -26,7 +26,8 @@ public class StudentManager {
         }
 
         students.add(student);
-        System.out.println(student.getName() + " added successfully!");
+            FileManager.saveStudentsToFile(students);
+            System.out.println(student.getName() + " added successfully!");
     }
 
     // Display all students
@@ -128,6 +129,7 @@ public class StudentManager {
                System.out.println(students.get(i).getName() + " deleted successfully!");
 
                students.remove(i);
+               FileManager.saveStudentsToFile(students);
                return;
             }
         }
@@ -147,6 +149,8 @@ public class StudentManager {
                 student.setCourse(course);
                 student.setMarks(marks);
 
+                FileManager.saveStudentsToFile(students);
+
                 System.out.println("Student updated successfully!");
                 return;
             }
@@ -156,8 +160,5 @@ public class StudentManager {
 
 
     }
-    // Save students to file
-    public void saveStudents() {
-        FileManager.saveStudentsToFile(students);
-    }
+   
 }
