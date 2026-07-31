@@ -160,5 +160,41 @@ public class StudentManager {
 
 
     }
+
+    // Display student statistics
+    public void displayStatistics() {
+
+        if (students.isEmpty()) {
+            System.out.println("No student records available.");
+            return;
+        }
+
+        int totalStudents = students.size();
+
+        double totalMarks = 0;
+        double highestMarks = students.get(0).getMarks();
+        double lowestMarks = students.get(0).getMarks();
+
+        for (Student student : students) {
+
+            totalMarks += student.getMarks();
+
+            if (student.getMarks() > highestMarks) {
+                highestMarks = student.getMarks();
+            }
+
+            if (student.getMarks() < lowestMarks) {
+                lowestMarks = student.getMarks();
+            }
+        }
+
+        double averageMarks = totalMarks / totalStudents;
+
+        System.out.println("\n========== Student Statistics ==========");
+        System.out.println("Total Students : " + totalStudents);
+        System.out.printf("Average Marks  : %.2f%n", averageMarks);
+        System.out.println("Highest Marks  : " + highestMarks);
+        System.out.println("Lowest Marks   : " + lowestMarks);
+    }
    
 }

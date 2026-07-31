@@ -20,7 +20,8 @@ public class Main {
             System.out.println("6. Update Student");
             System.out.println("7. Sort Students by Name");
             System.out.println("8. Sort Students by Marks");
-            System.out.println("9. Exit");
+            System.out.println("9. View Statistics");
+            System.out.println("10. Exit");
 
             choice = InputHelper.readInt(sc, "Enter your choice: ");
 
@@ -204,6 +205,12 @@ public class Main {
                 
                 case 9:
 
+                    manager.displayStatistics();
+
+                    break;
+
+                case 10:
+
                     System.out.println(
                             "Thank you for using Student Management System!"
                     );
@@ -217,7 +224,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 9);
+        } while (choice != 10);
 
         sc.close();
     }
