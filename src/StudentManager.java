@@ -196,5 +196,25 @@ public class StudentManager {
         System.out.println("Highest Marks  : " + highestMarks);
         System.out.println("Lowest Marks   : " + lowestMarks);
     }
-   
+
+    // Display the top performer
+    public void displayTopPerformer() {
+
+        if (students.isEmpty()) {
+            System.out.println("No student records available.");
+            return;
+        }
+
+        Student topStudent = students.get(0);
+
+        for (Student student : students) {
+
+            if (student.getMarks() > topStudent.getMarks()) {
+                topStudent = student;
+            }
+        }
+
+        System.out.println("\n========== Top Performer ==========");
+        topStudent.displayStudent();
+    }  
 }
