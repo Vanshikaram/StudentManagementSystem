@@ -217,4 +217,30 @@ public class StudentManager {
         System.out.println("\n========== Top Performer ==========");
         topStudent.displayStudent();
     }  
+
+    // Display students by course
+    public void displayStudentsByCourse(String course) {
+
+        if (students.isEmpty()) {
+            System.out.println("No student records available.");
+            return;
+        }
+
+        boolean found = false;
+
+        System.out.println("\n========== Students in " + course + " ==========");
+
+        for (Student student : students) {
+
+            if (student.getCourse().equalsIgnoreCase(course)) {
+
+                student.displayStudent();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No students found in course: " + course);
+        }
+    }
 }

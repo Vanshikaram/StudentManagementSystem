@@ -22,7 +22,8 @@ public class Main {
             System.out.println("8. Sort Students by Marks");
             System.out.println("9. View Statistics");
             System.out.println("10. View Top Performer");
-            System.out.println("11. Exit");
+            System.out.println("11. Display Students by Course");
+            System.out.println("12. Exit");
 
             choice = InputHelper.readInt(sc, "Enter your choice: ");
 
@@ -218,6 +219,17 @@ public class Main {
 
                 case 11:
 
+                    String courseName = InputHelper.readString(
+                        sc,
+                        "Enter Course Name: "
+                    );
+
+                    manager.displayStudentsByCourse(courseName);
+
+                    break;
+
+                case 12:
+
                     System.out.println(
                             "Thank you for using Student Management System!"
                     );
@@ -231,7 +243,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 11);
+        } while (choice != 12);
 
         sc.close();
     }
