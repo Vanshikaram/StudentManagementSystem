@@ -1,6 +1,8 @@
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StudentManager {
 
@@ -241,6 +243,37 @@ public class StudentManager {
 
         if (!found) {
             System.out.println("No students found in course: " + course);
+        }
+    }
+    // Count students by course
+    public void countStudentsByCourse() {
+
+     if (students.isEmpty()) {
+            System.out.println("No student records available.");
+           return;
+        }
+
+        HashMap<String, Integer> courseCount = new HashMap<>();
+
+        for (Student student : students) {
+
+            String course = student.getCourse();
+
+            if (courseCount.containsKey(course)) {
+
+                courseCount.put(course, courseCount.get(course) + 1);
+
+            } else {
+
+                courseCount.put(course, 1);
+            }
+        }
+
+        System.out.println("\n========== Student Count by Course ==========");
+
+        for (Map.Entry<String, Integer> entry : courseCount.entrySet()) {
+
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         }
     }
 }
