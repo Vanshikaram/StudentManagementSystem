@@ -62,6 +62,24 @@ public class Student {
         this.marks = marks;
     }
 
+    public String getGrade() {
+
+        if (marks >= 90)
+            return "A+";
+
+        else if (marks >= 80)
+            return "A";
+
+        else if (marks >= 70)
+            return "B";
+
+        else if (marks >= 60)
+            return "C";
+
+        else
+            return "F";
+    }
+
     // Display Student Information
     public void displayStudent() {
         System.out.println("----------- Student Details -----------");
@@ -70,6 +88,7 @@ public class Student {
         System.out.println("Age     : " + age);
         System.out.println("Course  : " + course);
         System.out.println("Marks   : " + marks);
+        System.out.println("Grade   : " + getGrade());
         System.out.println("---------------------------------------");
     }
 }
