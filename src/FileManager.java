@@ -1,10 +1,11 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
-
+import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FileManager {
 
@@ -13,8 +14,7 @@ public class FileManager {
     // Save students to file
     public static void saveStudentsToFile(ArrayList<Student> students) {
 
-        try (BufferedWriter writer = new BufferedWriter(
-                new FileWriter(FILE_NAME))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
 
             for (Student student : students) {
 
@@ -63,9 +63,91 @@ public class FileManager {
             }
 
         } catch (IOException e) {
-        System.out.println("No existing student data found.");
+
+            System.out.println("No existing student data found.");
         }
 
         return students;
     }
+
+    // Export student report
+    public static void exportStudentReport(ArrayList<Student> students) {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("StudentReport.txt"))) {
+
+            DateTimeFormatter formatter =
+                    DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+            writer.write("========== STUDENT REPORT ==========");
+            writer.newLine();
+            writer.write("Generated On : " + LocalDateTime.now().format(formatter));
+            writer.newLine();
+            writer.newLine();
+
+            writer.write("Total Students : " + students.size());
+            writer.newLine();
+            writer.newLine();
+
+            double totalMarks = 0;
+            double highestMarks = students.get(0).getMarks();
+            double lowestMarks = students.get(0).getMarks();
+
+            for (Student student : students) {
+
+                writer.write("--------------------------------");
+                writer.newLine();
+
+                writer.write("ID      : " + student.getId());
+                writer.newLine();
+
+                writer.write("Name    : " + student.getName());
+                writer.newLine();
+
+                writer.write("Age     : " + student.getAge());
+                writer.newLine();
+
+                writer.write("Course  : " + student.getCourse());
+                writer.newLine();
+
+                writer.write("Marks   : " + student.getMarks());
+                writer.newLine();
+
+                writer.write("Grade   : " + student.getGrade());
+                writer.newLine();
+
+                writer.write("--------------------------------");
+                writer.newLine();
+                writer.newLine();
+
+                totalMarks += student.getMarks();
+
+                if (student.getMarks() > highestMarks) {
+                    highestMarks = student.getMarks();
+                }
+
+                if (student.getMarks() < lowestMarks) {
+                    lowestMarks = student.getMarks();
+                }
+            }
+
+            double averageMarks = totalMarks / students.size();
+
+            writer.write("========== STATISTICS ==========");
+            writer.newLine();
+            writer.write("Average Marks : " + String.format("%.2f", averageMarks));
+            writer.newLine();
+            writer.write("Highest Marks : " + highestMarks);
+            writer.newLine();
+            writer.write("Lowest Marks  : " + lowestMarks);
+            writer.newLine();
+
+            System.out.println("Student report exported successfully!");
+
+        } catch (IOException e) {
+
+            System.out.println("Error exporting student report.");
+            System.out.println(e.getMessage());
+        }
+    }
 }
+    

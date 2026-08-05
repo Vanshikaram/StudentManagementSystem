@@ -1,0 +1,27 @@
+========== STUDENT REPORT ==========
+Generated On : 05-08-2026 19:29:20
+
+Total Students : 2
+
+--------------------------------
+ID      : 101
+Name    : rahul
+Age     : 45
+Course  : cse
+Marks   : 90.0
+Grade   : A+
+--------------------------------
+
+--------------------------------
+ID      : 102
+Name    : reeta
+Age     : 56
+Course  : tech
+Marks   : 98.0
+Grade   : A+
+--------------------------------
+
+========== STATISTICS ==========
+Average Marks : 94.00
+Highest Marks : 98.0
+Lowest Marks  : 90.0

@@ -24,7 +24,8 @@ public class Main {
             System.out.println("10. View Top Performer");
             System.out.println("11. Display Students by Course");
             System.out.println("12. Count Students by Course");
-            System.out.println("13. Exit");
+            System.out.println("13. Export Student Report");
+            System.out.println("14. Exit");
 
             choice = InputHelper.readInt(sc, "Enter your choice: ");
 
@@ -237,6 +238,12 @@ public class Main {
 
                 case 13:
 
+                    manager.exportReport();
+
+                    break;
+
+                case 14:
+
                     System.out.println(
                             "Thank you for using Student Management System!"
                     );
@@ -250,7 +257,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 13);
+        } while (choice != 14);
 
         sc.close();
     }

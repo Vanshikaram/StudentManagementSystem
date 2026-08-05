@@ -276,4 +276,14 @@ public class StudentManager {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
     }
+    public void exportReport() {
+
+        if (students.isEmpty()) {
+
+            System.out.println("No student records available.");
+            return;
+        }
+
+        FileManager.exportStudentReport(students);
+    }
 }
