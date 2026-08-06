@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.File;
 
 public class FileManager {
 
@@ -147,6 +148,54 @@ public class FileManager {
 
             System.out.println("Error exporting student report.");
             System.out.println(e.getMessage());
+        }
+    }
+    // Backup student data
+    public static void backupStudentData() {
+
+        File source = new File("students.txt");
+        File backup = new File("students_backup.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(source));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(backup))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                writer.write(line);
+                writer.newLine();
+            }
+
+            System.out.println("Backup created successfully!");
+
+        } catch (IOException e) {
+
+            System.out.println("Error creating backup.");
+        }
+    }
+    // Restore student data
+    public static void restoreStudentData() {
+
+        File backup = new File("students_backup.txt");
+        File source = new File("students.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(backup));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(source))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                writer.write(line);
+                writer.newLine();
+            }
+
+            System.out.println("Student data restored successfully!");
+
+        } catch (IOException e) {
+
+            System.out.println("Backup file not found.");
         }
     }
 }

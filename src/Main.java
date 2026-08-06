@@ -25,7 +25,9 @@ public class Main {
             System.out.println("11. Display Students by Course");
             System.out.println("12. Count Students by Course");
             System.out.println("13. Export Student Report");
-            System.out.println("14. Exit");
+            System.out.println("14. Backup Student Data");
+            System.out.println("15. Restore Student Data");
+            System.out.println("16. Exit");
 
             choice = InputHelper.readInt(sc, "Enter your choice: ");
 
@@ -244,6 +246,18 @@ public class Main {
 
                 case 14:
 
+                    manager.backupData();
+
+                    break;
+
+                case 15:
+
+                    manager.restoreData();
+
+                    break;
+
+                case 16:
+
                     System.out.println(
                             "Thank you for using Student Management System!"
                     );
@@ -257,7 +271,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 14);
+        } while (choice != 16);
 
         sc.close();
     }

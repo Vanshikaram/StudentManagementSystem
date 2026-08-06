@@ -286,4 +286,16 @@ public class StudentManager {
 
         FileManager.exportStudentReport(students);
     }
+    public void backupData() {
+
+        FileManager.backupStudentData();
+    }
+    public void restoreData() {
+
+        FileManager.restoreStudentData();
+
+        students = FileManager.loadStudentsFromFile();
+
+        System.out.println("Student list refreshed.");
+    }
 }
