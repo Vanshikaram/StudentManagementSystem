@@ -245,6 +245,36 @@ public class StudentManager {
             System.out.println("No students found in course: " + course);
         }
     }
+
+    // Search students by marks range
+    public void searchStudentsByMarksRange(double minMarks, double maxMarks) {
+
+        if (students.isEmpty()) {
+            System.out.println("No student records available.");
+            return;
+        }
+
+        boolean found = false;
+
+        System.out.println("\n========== Students with Marks Between "
+                + minMarks + " and " + maxMarks + " ==========");
+
+        for (Student student : students) {
+
+            double marks = student.getMarks();
+
+            if (marks >= minMarks && marks <= maxMarks) {
+
+                student.displayStudent();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No students found in this marks range.");
+        }
+    }
+
     // Count students by course
     public void countStudentsByCourse() {
 

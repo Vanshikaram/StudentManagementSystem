@@ -24,10 +24,11 @@ public class Main {
             System.out.println("10. View Top Performer");
             System.out.println("11. Display Students by Course");
             System.out.println("12. Count Students by Course");
-            System.out.println("13. Export Student Report");
-            System.out.println("14. Backup Student Data");
-            System.out.println("15. Restore Student Data");
-            System.out.println("16. Exit");
+            System.out.println("13. Search Students by Marks Range");
+            System.out.println("14. Export Student Report");
+            System.out.println("15. Backup Student Data");
+            System.out.println("16. Restore Student Data");
+            System.out.println("17. Exit");
 
             choice = InputHelper.readInt(sc, "Enter your choice: ");
 
@@ -240,23 +241,42 @@ public class Main {
 
                 case 13:
 
-                    manager.exportReport();
+                    System.out.print("Enter minimum marks: ");
+                    double minMarks = sc.nextDouble();
+
+                    System.out.print("Enter maximum marks: ");
+                    double maxMarks = sc.nextDouble();
+
+                    if (minMarks < 0 || maxMarks > 100 || minMarks > maxMarks) {
+
+                        System.out.println("Invalid marks range!");
+
+                    } else {
+
+                        manager.searchStudentsByMarksRange(minMarks, maxMarks);
+                    }
 
                     break;
 
                 case 14:
 
-                    manager.backupData();
+                    manager.exportReport();
 
                     break;
 
                 case 15:
 
-                    manager.restoreData();
+                    manager.backupData();
 
                     break;
 
                 case 16:
+
+                    manager.restoreData();
+
+                    break;
+
+                case 17:
 
                     System.out.println(
                             "Thank you for using Student Management System!"
@@ -271,7 +291,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 16);
+        } while (choice != 17);
 
         sc.close();
     }
